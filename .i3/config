@@ -1,13 +1,4 @@
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
+#a modified version of the default i3 config file
 
 ## Autostart Stuff
 # Set mah wallpaper
@@ -21,11 +12,11 @@ exec nm-applet
 # Gimme a  clipboard manager
 exec sleep 2 && parcellite
 # Gimme Compositing!
-exec sleep 2 && xcompmgr -cf -r 0 -D 6
+exec sleep 2 && xcompmgr -cf -r 0 -D 6 #courtesy of archmancro from the arch linux forums
 # Gimme a volume icon
 exec sleep 3 && volumeicon
 # Gimme mah volume controls
-exec sleep 2 &&xfce4-volumed
+exec sleep 2 &&xfce4-volumed # can be annoying unless you have osd notifications
 # Start mah x screen saver
 exec xscreensaver -no-splash
 # Gimme mah fortune cookie
@@ -39,7 +30,7 @@ bindsym Mod4+w exec x-www-browser
 # lock screen (i don't like i3lock)
 bindsym Mod4+l exec cb-lock
 # start a terminal 
-bindsym Mod1+Return exec urxvt -bg black -fg grey +tr
+bindsym Mod1+Return exec urxvt -bg black -fg grey
 ## End my keybinds
 
 ## My other settings
@@ -189,4 +180,4 @@ bindsym Mod1+r mode "resize"
 #
 # Please remove the following exec line:
 #######################################################################
-exec i3-config-wizard
+#exec i3-config-wizard
