@@ -1,0 +1,101 @@
+conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+#  Settings
+##############################################
+background yes
+use_xft yes
+xftfont sans:size=9
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 200
+maximum_width 240
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color d8d8d8
+
+default_shade_color 000000
+default_outline_color d9d7d6
+alignment top_right
+gap_x 12
+gap_y 24
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+##############################################
+#  Output
+##############################################
+TEXT
+
+${alignc}${color white}[${color grey}vedat${color white}][${color red}$nodename${color white}] 
+#${color slate grey}$sysname $kernel ${color #CCCCCC}on ${color #888888}$machine
+${color slate grey}Uptime: $alignr${color grey}$uptime
+${color slate grey}${time %b/%a/%d}$alignr${color grey}${time %k:%M:%S}
+${color slate grey}Weather [MUC,DE] $alignr${color grey}${execi 500 /home/vedat/.scripts/weather.sh "EUR|DE|GM002|Munich"}
+${color slate grey}${alignc}System Load
+${hr 2}
+RAM ${color grey}$alignr$mem/$memmax
+${color slate grey}Root$alignr${color grey}${fs_used /}/${fs_size /}
+${color slate grey}Home$alignr${color grey}${fs_used /home}/${fs_size /home}
+${color slate grey}CPU$alignr${color grey}${cpu cpu0}%
+${color slate grey}Battery$alignr${color grey}$battery_percent%
+#,${execpi 100 acpi -b | sed -n 's/.*\([0-9][0-9]:[0-9][0-9]\):[0-9][0-9].*/\1/p'}
+${color slate grey}${alignc}Networks
+${hr 2}
+${if_running vpnc}You have an active VPN connection.${else}${endif}
+${color grey}Wireless LAN${color slate grey}
+${if_match "${wireless_essid wlan0}" == "off/any"}No connection to a wireless network.
+${else}Connected to ${color grey}${wireless_essid wlan0}${color slate grey}
+Bitrate${color grey}${wireless_bitrate wlan0}
+Link Quality$alignr{$wireless_link_qual_perc wlan0}
+Up Speed$alignr${color grey}${upspeedf wlan0}${color slate grey}
+Down Speed$alignr${color grey}${downspeedf eth0}${color slate grey}${endif}
+${color grey}Ethernet${color slate grey}
+Up Speed$alignr${color grey}${upspeedf eth0}${color slate grey}
+Down Speed$alignr${color grey}${downspeedf eth0}${color slate grey}
+${alignc}Processes
+${hr 2}
+${color white}Name ${alignr}PID,  CPU, MEM
+${color grey}${top name 1} ${alignr}${top pid 1}${top cpu 1}${top mem 1}
+${color grey}${top name 2} ${alignr}${top pid 2}${top cpu 2}${top mem 2}
+${color grey}${top name 3} ${alignr}${top pid 3}${top cpu 3}${top mem 3}
+${color grey}${top name 4} ${alignr}${top pid 4}${top cpu 4}${top mem 4}
+${if_running audacious}${color slate grey}${alignc}Audacious [Now Playing]
+${hr 2}
+${color grey}$alignc${exec audtool --current-song}${color slate grey}${endif}
+#S H O R T C U T    K E Y S
+#${hr}
+#Alt+F2$alignr Run Dialog
+#Alt+F3$alignr Alt Menu
+#Super+Space$alignr Main Menu
+#Super+Tab$alignr Client Menu
+#Super+t$alignr Terminal
+#Super+f$alignr File Manager
+#Super+e$alignr Editor
+#Super+m$alignr Media Player
+#Super+w$alignr Web Browser
+#Super+l$alignr Lock Screen
+#Super+v$alignr Volume Control
+#
+#Super+x$alignr Logout
+#PrtSc$alignr Screenshot
